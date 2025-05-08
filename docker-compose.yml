@@ -1,0 +1,17 @@
+services:
+  tpv-gateway:
+    build: .
+    image: goa-gateway:1.0.0
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE: http://host.docker.internal:8761/eureka/
+    networks:
+      - goa
+
+networks:
+  goa:
+    external: true
+
+#> docker compose up --build -d
