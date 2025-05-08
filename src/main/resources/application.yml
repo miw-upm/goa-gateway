@@ -1,6 +1,6 @@
 spring:
   application:
-    name: tpv-gateway
+    name: goa-gateway
   profiles:
     # Profile -------------------------------------------------
     active: dev
@@ -22,8 +22,8 @@ spring:
           # /tpv-user/**, /tpv-article/**, /tpv-ticket/**
           lower-case-service-id: true
       routes:
-        - id: route-tpv-user-login
-          uri: lb://tpv-user
+        - id: route-goa-user-login
+          uri: lb://goa-user
           predicates:
             - Path=/login/**
           filters:
@@ -31,14 +31,14 @@ spring:
               args:
                 regexp: "^/login(?<segment>/.*)?"
                 replacement: "/login${segment}"
-        - id: route-tpv-user-default
-          uri: lb://tpv-user
+        - id: route-goa-user-default
+          uri: lb://goa-user
           predicates:
             - Path=/default-ui.css
           filters:
             - RewritePath=/default-ui.css,/default-ui.css
-        - id: route-tpv-user-oauth2-authorize
-          uri: lb://tpv-user
+        - id: route-goa-user-oauth2-authorize
+          uri: lb://goa-user
           predicates:
             - Path=/oauth2/authorize/**
           filters:
