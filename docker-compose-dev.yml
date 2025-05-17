@@ -1,5 +1,5 @@
 services:
-  tpv-gateway:
+  goa-gateway:
     build: .
     image: goa-gateway:1.0.0
     restart: always
