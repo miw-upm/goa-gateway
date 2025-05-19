@@ -14,38 +14,27 @@ spring:
     default-property-inclusion: NON_NULL
   cloud:
     gateway:
-      #      default-filters:
-      #        - StripPrefix=1
-      discovery:
-        locator:
-          enabled: true
-          # /tpv-user/**, /tpv-article/**, /tpv-ticket/**
-          lower-case-service-id: true
       routes:
-        - id: route-goa-user-login
+        - id: goa-user
+          uri: http://localhost:8081
+          predicates:
+            - Path=/goa-user/**
+          filters:
+            - StripPrefix=1
+
+
+        - id: oauth2-authorize
+          uri: lb://goa-user
+          predicates:
+            - Path=/oauth2/authorize/**
+        - id: login
           uri: lb://goa-user
           predicates:
             - Path=/login/**
-          filters:
-            - name: RewritePath
-              args:
-                regexp: "^/login(?<segment>/.*)?"
-                replacement: "/login${segment}"
         - id: route-goa-user-default
           uri: lb://goa-user
           predicates:
             - Path=/default-ui.css
-          filters:
-            - RewritePath=/default-ui.css,/default-ui.css
-        - id: route-goa-user-oauth2-authorize
-          uri: lb://goa-user
-          predicates:
-            - Path=/oauth2/authorize/**
-          filters:
-            - name: RewritePath
-              args:
-                regexp: "^/oauth2(?<segment>/.*)?"
-                replacement: "/oauth2${segment}"
 
       globalcors:
         corsConfigurations:
