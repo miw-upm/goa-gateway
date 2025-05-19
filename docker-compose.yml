@@ -1,7 +1,7 @@
 services:
   goa-gateway:
     build: .
-    image: goa-gateway:1.0.0
+    image: goa-gateway:latest
     restart: always
     ports:
       - "8080:8080"
