@@ -1,3 +1,8 @@
+server:
+  port: 8080
+  forward-headers-strategy: native
+  use-forward-headers: true
+
 spring:
   application:
     name: goa-gateway
@@ -50,9 +55,6 @@ spring:
               - OPTIONS
             allowedHeaders: "*"
             allowCredentials: true
-server:
-  forward-headers-strategy: native
-  use-forward-headers: true
 
 info:
   app:
