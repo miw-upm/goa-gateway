@@ -5,3 +5,26 @@ eureka:
   client:
     service-url:
       defaultZone: http://goa-eureka:8761/eureka/
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: goa-user
+          uri: lb://goa-user
+          predicates:
+            - Path=/goa-user/**
+          filters:
+            - StripPrefix=1
+        - id: oauth2-authorize
+          uri: lb://goa-user
+          predicates:
+            - Path=/oauth2/authorize/**
+        - id: login
+          uri: lb://goa-user
+          predicates:
+            - Path=/login/**
+        - id: route-goa-user-default
+          uri: lb://goa-user
+          predicates:
+            - Path=/default-ui.css
