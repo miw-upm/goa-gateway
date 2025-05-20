@@ -27,3 +27,4 @@ jobs:
 
       - name: Build & Unit & IT & FT
         run: mvn -B clean verify
+
