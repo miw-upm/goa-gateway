@@ -62,5 +62,4 @@ jobs:
               --restart always \
               --network goa \
               -p 8080:8080 \
-              -e EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE=http://goa-eureka:8761/eureka/ \
               ${{ env.GHCR_URL }}/${{ env.REPOSITORY }}:latest
