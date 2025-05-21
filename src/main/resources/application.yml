@@ -52,15 +52,10 @@ management:
   endpoints:
     web:
       exposure:
-        include: health, info, gateway, metrics, loggers
-  info:
-    env:
-      enabled: true
+        include: health
   endpoint:
-    gateway:
-      enabled: true
-  loggers:
-    enabled: true
+    health:
+      show-details: never
 
 logging:
   level:
