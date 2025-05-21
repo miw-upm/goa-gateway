@@ -1,7 +1,6 @@
 server:
   port: 8080
   use-forward-headers: true
-  # forward-headers-strategy: native
 
 spring:
   application:
@@ -23,21 +22,9 @@ spring:
         - id: goa-user
           uri: lb://goa-user
           predicates:
-            - Path=/goa-user/**
+            - Path=/api/goa-user/**
           filters:
-            - StripPrefix=1
-        - id: oauth2-authorize
-          uri: lb://goa-user
-          predicates:
-            - Path=/oauth2/authorize/**
-        - id: login
-          uri: lb://goa-user
-          predicates:
-            - Path=/login/**
-        - id: default-ui
-          uri: lb://goa-user
-          predicates:
-            - Path=/default-ui.css
+            - StripPrefix=2
 
       globalcors:
         corsConfigurations:
