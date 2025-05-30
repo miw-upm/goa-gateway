@@ -25,6 +25,12 @@ spring:
             - Path=/api/goa-user/**
           filters:
             - StripPrefix=2
+        - id: goa-encargo
+          uri: lb://goa-encargo
+          predicates:
+            - Path=/api/goa-encargo/**
+          filters:
+            - StripPrefix=2
 
       globalcors:
         corsConfigurations:
