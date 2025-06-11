@@ -7,7 +7,7 @@ spring:
     name: goa-gateway
   profiles:
     # Profile -------------------------------------------------
-    active: dev
+    active: prod
   # -----------------------------------------------------------
   output:
     ansi:
