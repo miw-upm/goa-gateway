@@ -25,10 +25,10 @@ spring:
             - Path=/api/goa-user/**
           filters:
             - StripPrefix=2
-        - id: goa-encargo
-          uri: lb://goa-encargo
+        - id: goa-engagement
+          uri: lb://goa-engagement
           predicates:
-            - Path=/api/goa-encargo/**
+            - Path=/api/goa-engagement/**
           filters:
             - StripPrefix=2
 
