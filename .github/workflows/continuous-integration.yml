@@ -1,30 +1,28 @@
 name: CI
 on:
   push:
-    branches: [develop,release-*]
+    branches:
+      - develop
+      - release-*
 
 jobs:
-  devops:
-    name: Test - Unit & Integration & SonarCloud Scan
+  ci:
+    name: Tests & CodeQL & SonarCloud
     runs-on: ubuntu-22.04
+
     steps:
-      - name: Clone repository
+      - name: ⬇️ Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Set up Java
+      - name: ☕ Set up Java
         uses: actions/setup-java@v4
         with:
-          distribution: zulu
+          distribution: temurin
           java-version: 21
           cache: maven
 
-      - name: Extract version from pom.xml
-        id: get-version
-        run: |
-          echo "ARTIFACT=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)" >> $GITHUB_ENV    
-
-      - name: Build & Unit & IT & FT
-        run: mvn -B clean verify
+      - name: ✅ Run Unit Test & Integration Test & Functional Test
+        run: mvn -B verify
 
