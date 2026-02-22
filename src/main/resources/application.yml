@@ -31,6 +31,18 @@ spring:
             - Path=/api/goa-engagement/**
           filters:
             - StripPrefix=2
+        - id: goa-billing
+          uri: lb://goa-billing
+          predicates:
+            - Path=/api/goa-billing/**
+          filters:
+            - StripPrefix=2
+        - id: goa-support
+          uri: lb://goa-support
+          predicates:
+            - Path=/api/goa-support/**
+          filters:
+            - StripPrefix=2
 
       globalcors:
         corsConfigurations:
