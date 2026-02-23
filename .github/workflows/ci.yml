@@ -1,4 +1,4 @@
-name: CI
+name: CI goa-gateway
 on:
   push:
     branches:
