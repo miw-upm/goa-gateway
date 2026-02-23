@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @RequestMapping(SystemResource.SYSTEM)
 public class SystemResource {
     public static final String SYSTEM = "/api/system";
-    public static final String VERSION_BADGE = "/version-badge";
+    public static final String VERSION_BADGE = "api/version-badge";
     private static final String BADGE_IMAGE_TEMPLATE = """
             <svg xmlns="http://www.w3.org/2000/svg" width="%d" height="20">
                 <linearGradient id="a" x2="0" y2="100%%">
