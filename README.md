@@ -8,7 +8,6 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=miw-upm-github_micro-gateway&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=miw-upm-github_micro-gateway)
 [![AWS broken](https://gestion.ocanabogados.es/api/system/version-badge)](https://gestion.ocanabogados.es/api/system)
 
-
 ### Tecnologías necesarias
 `Java` `Maven` `GitHub` `GitHub Actions` `Spring-Boot` `GitHub Packages` `Docker` `OpenAPI`
 
