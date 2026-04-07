@@ -2,7 +2,7 @@ name: CD. AWS Lightsail
 on:
   push:
     branches:
-      - master
+      - maing
 
 jobs:
   cd:
