@@ -61,6 +61,6 @@ jobs:
               --network goa \
               -p 8080:8080 \
               --memory 512m \
-              --memory-swap 1024m \            
+              --memory-swap 1024m \
               ghcr.io/${{ env.REPOSITORY }}:latest
 
