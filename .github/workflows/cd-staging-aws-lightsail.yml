@@ -63,3 +63,4 @@ jobs:
               --memory 512m \
               --memory-swap 1024m \            
               ghcr.io/${{ env.REPOSITORY }}:latest
+
