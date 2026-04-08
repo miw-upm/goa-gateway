@@ -51,6 +51,7 @@ spring:
               - "http://localhost:4200"
               - "http://localhost:8080"
               - "https://gestion.ocanabogados.es"
+              - "https://goa.miwupm.es"
             allowedMethods:
               - GET
               - POST
