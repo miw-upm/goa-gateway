@@ -2,13 +2,17 @@ server:
   port: 8080
   use-forward-headers: true
 
+info:
+  app:
+    artifact: "@project.artifactId@"
+    version: "@project.version@"
+    build: "@maven.build.timestamp@"
+
 spring:
   application:
     name: goa-gateway
   profiles:
-    # Profile -------------------------------------------------
-    active: dev
-  # -----------------------------------------------------------
+    default: dev
   output:
     ansi:
       enabled: ALWAYS
@@ -43,7 +47,6 @@ spring:
             - Path=/api/goa-support/**
           filters:
             - StripPrefix=2
-
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -62,11 +65,6 @@ spring:
             allowedHeaders: "*"
             allowCredentials: true
 
-info:
-  app:
-    artifact: "@project.artifactId@"
-    version: "@project.version@"
-    build: "@maven.build.timestamp@"
 management:
   endpoints:
     web:
@@ -79,8 +77,7 @@ management:
 logging:
   level:
     root: WARN
-    es.upm.miw: DEBUG
-    org.springframework.cloud.gateway: WARN
+    es.upm.api: DEBUG
 
 eureka:
   client:
