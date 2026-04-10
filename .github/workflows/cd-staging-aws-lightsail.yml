@@ -58,9 +58,8 @@ jobs:
             docker run -d \
               --name ${{ env.ARTIFACT }} \
               --restart always \
-              --network goa \
-              -p 8080:8080 \
               --memory 512m \
               --memory-swap 1024m \
+              --network goa \
+              -p 8080:8080 \
               ghcr.io/${{ env.REPOSITORY }}:latest
-
