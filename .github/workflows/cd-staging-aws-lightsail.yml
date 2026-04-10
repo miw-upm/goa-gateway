@@ -60,6 +60,7 @@ jobs:
               --restart always \
               --memory 512m \
               --memory-swap 1024m \
-              --network goa \
               -p 8080:8080 \
+              --network goa \
+              -e SPRING_PROFILES_ACTIVE=prod \
               ghcr.io/${{ env.REPOSITORY }}:latest
