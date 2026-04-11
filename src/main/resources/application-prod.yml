@@ -1,3 +1,8 @@
+logging:
+  level:
+    root: WARN
+    es.upm.miw: INFO
+
 eureka:
   client:
     service-url:

@@ -77,7 +77,7 @@ management:
 logging:
   level:
     root: WARN
-    es.upm.api: DEBUG
+    es.upm.miw: DEBUG
 
 eureka:
   client:
