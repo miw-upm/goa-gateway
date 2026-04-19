@@ -52,6 +52,7 @@ jobs:
           key: ${{ secrets.AWS_LIGHTSAIL_SSH_KEY_MAIN }}
           script: |
             echo ${{ secrets.GHCR_PERSONAL_ACCESS_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            
             docker rm -f ${{ env.ARTIFACT }} || true
             docker rmi ghcr.io/${{ env.REPOSITORY }}:latest || true
             docker pull ghcr.io/${{ env.REPOSITORY }}:latest
@@ -64,3 +65,12 @@ jobs:
               --network goa \
               -e SPRING_PROFILES_ACTIVE=prod \
               ghcr.io/${{ env.REPOSITORY }}:latest
+
+            for i in $(seq 1 6); do  # 1 minutos
+              sleep 10
+              STATUS=$(docker inspect --format='{{.State.Health.Status}}' ${{ env.ARTIFACT }} 2>/dev/null)
+              echo "Intento $i: $STATUS"
+              [ "$STATUS" = "healthy" ] && break
+            done
+            
+            docker image prune --filter "until=12h" -f
