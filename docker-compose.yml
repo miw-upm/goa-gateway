@@ -9,13 +9,12 @@ services:
       JAVA_OPTS: "-Xms64m -Xmx384m"
       EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE: http://host.docker.internal:8761/eureka/
     mem_limit: 512m
-    networks:
-      - goa
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+    networks: [goa]
+    extra_hosts: ["host.docker.internal:host-gateway"]
 
 networks:
   goa:
     external: true
 
+# Windows PowerShell
 #> docker compose up --build -d
