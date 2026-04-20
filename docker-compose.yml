@@ -3,8 +3,7 @@ services:
     build: .
     image: goa-gateway:latest
     restart: always
-    ports:
-      - "8080:8080"
+    ports: ["8080:8080"]
     environment:
       JAVA_OPTS: "-Xms64m -Xmx384m"
       EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE: http://host.docker.internal:8761/eureka/
